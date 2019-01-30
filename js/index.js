@@ -5,12 +5,14 @@ for(var i = 0 ; i < document.querySelectorAll(".drum").length ; i++ ) {
     //alert("Button is clicked mate") ;
 
     playSound(this.innerHTML) ;
+    buttonAnimation(this.innerHTML) ;
 
   }) ;
 }
 
 document.addEventListener("keydown" , function(e) {
    playSound(e.key) ;
+   buttonAnimation(e.key) ;
 
 }) ;
 
@@ -48,4 +50,14 @@ function playSound(keyToPlay) {
       default:
         break ;
   }
+}
+
+
+function buttonAnimation(keyPressed) {
+  var activeBtn = document.querySelector("." + keyPressed) ;
+  activeBtn.classList.add("pressed") ;
+
+  setTimeout(function() {
+    activeBtn.classList.remove("pressed") ;
+  } , 100) ;
 }
